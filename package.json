@@ -1,0 +1,13 @@
+{
+  "name": "afkbotmc",
+  "version": "1.0.0",
+  "description": "Bot Minecraft Java untuk AFK di server (Termux compatible)",
+  "main": "afk.js",
+  "scripts": {
+    "start": "node afk.js"
+  },
+  "dependencies": {
+    "mineflayer": "^4.13.0",
+    "axios": "^1.6.8"
+  }
+}
