@@ -3,18 +3,17 @@ const axios = require('axios');
 const { spawn } = require('child_process');
 
 // Telegram Config
-const TELEGRAM_TOKEN = '7725896935:AAETqAvSakwSpd9mi0nE74VWV_-3gEcM-Lc';
-const TELEGRAM_CHAT_ID = '7186905579';
+const TELEGRAM_TOKEN = '****';
+const TELEGRAM_CHAT_ID = '****';
 
 // Bot config
 const bot = mineflayer.createBot({
-  host: 'play.newsurv.my.id',
+  host: '****',
   port: 25565,
-  username: 'DimassssSlebewww',
+  username: '*****',
   version: false
 });
 
-// Fungsi kirim Telegram
 function sendToTelegram(message) {
   axios.post(`https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`, {
     chat_id: TELEGRAM_CHAT_ID,
@@ -24,7 +23,7 @@ function sendToTelegram(message) {
   });
 }
 
-// Fungsi cek inventory (log ke Termux)
+// cek inventory (log Termux)
 function cekInventory() {
   const items = bot.inventory.items();
 
@@ -39,7 +38,7 @@ function cekInventory() {
   });
 }
 
-// Saat bot login
+// login
 bot.once('spawn', () => {
   console.log('✅ Bot login. Tunggu 3 detik...');
   setTimeout(() => {
@@ -82,7 +81,6 @@ const eatIfHungry = async () => {
   }
 };
 
-// Cek makan tiap 10 menit
 setInterval(eatIfHungry, 10 * 60 * 1000);
 
 // Log status bot tiap 1 jam
@@ -94,13 +92,13 @@ setInterval(() => {
   }
 }, 60 * 60 * 1000);
 
-// Jika bot di-kick
+// bot di-kick??
 bot.on('kicked', reason => {
   console.log('❌ Bot di-kick:', reason);
   sendToTelegram(`❌ Bot di-kick.\nAlasan: ${reason}`);
 });
 
-// Jika bot disconnect
+// bot disconnect
 bot.on('end', () => {
   console.log('🔁 Bot disconnect. Reconnect 10 detik...');
   sendToTelegram('🔁 Bot disconnect. Coba reconnect dalam 10 detik...');
