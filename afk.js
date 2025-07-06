@@ -2,17 +2,19 @@ const mineflayer = require('mineflayer');
 const axios = require('axios');
 const { spawn } = require('child_process');
 
+// Telegram Config
+const TELEGRAM_TOKEN = '7725896935:AAETqAvSakwSpd9mi0nE74VWV_-3gEcM-Lc';
+const TELEGRAM_CHAT_ID = '7186905579';
+
+// Bot config
 const bot = mineflayer.createBot({
-  host: 'IP',
+  host: 'play.newsurv.my.id',
   port: 25565,
-  username: 'NAME',
+  username: 'DimassssSlebewww',
   version: false
 });
 
-// Ganti token dan chat_id berikut ini:
-const TELEGRAM_TOKEN = 'TOKEN';
-const TELEGRAM_CHAT_ID = 'ID';
-
+// Fungsi kirim Telegram
 function sendToTelegram(message) {
   axios.post(`https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`, {
     chat_id: TELEGRAM_CHAT_ID,
@@ -22,42 +24,87 @@ function sendToTelegram(message) {
   });
 }
 
-// Bot berhasil login
+// Fungsi cek inventory (log ke Termux)
+function cekInventory() {
+  const items = bot.inventory.items();
+
+  if (items.length === 0) {
+    console.log('📦 Inventory kosong.');
+    return;
+  }
+
+  console.log('📦 Isi inventory:');
+  items.forEach(item => {
+    console.log(`- ${item.name} x${item.count} (Slot: ${item.slot})`);
+  });
+}
+
+// Saat bot login
 bot.once('spawn', () => {
-  console.log('✅ Bot login. tunggu 3 detik...');
+  console.log('✅ Bot login. Tunggu 3 detik...');
   setTimeout(() => {
     bot.chat('/login 12345678');
     console.log('✅ Login dikirim');
     bot.chat('/home afk');
     console.log('✅ /home afk dikirim');
 
-    const pos = bot.entity.position;
-    sendToTelegram(`✅ Bot AFK berhasil online di posisi X: ${pos.x.toFixed(2)}, Y: ${pos.y.toFixed(2)}, Z: ${pos.z.toFixed(2)}`);
+    // Tunggu 4 detik lagi lalu kirim status & cek inventory
+    setTimeout(() => {
+      const pos = bot.entity.position;
+      sendToTelegram(`✅ Bot AFK online di X: ${pos.x.toFixed(1)}, Y: ${pos.y.toFixed(1)}, Z: ${pos.z.toFixed(1)}`);
+      cekInventory();
+    }, 4000);
   }, 3000);
 });
 
-// Kalau bot di-kick
-bot.on('kicked', reason => {
-  console.log('❌ Bot di-kick:', reason);
-  sendToTelegram(`❌ Bot di-kick dari server.\nAlasan: ${reason}`);
-});
+// Fungsi makan jika lapar
+const eatIfHungry = async () => {
+  if (bot.food < 20) {
+    const foodItem = bot.inventory.items().find(item =>
+      item.name.includes('beef') ||
+      item.name.includes('chicken') ||
+      item.name.includes('porkchop') ||
+      item.name.includes('bread')
+    );
 
-// Kalau bot disconnect
-bot.on('end', () => {
-  console.log('🔁 Bot disconnect. Coba reconnect 10 detik lagi...');
-  sendToTelegram('🔁 Bot disconnect. Coba reconnect dalam 10 detik...');
-  setTimeout(() => {
-    spawn('node', ['afk.js'], {
-      stdio: 'inherit'
-    });
-  }, 10000);
-});
+    if (foodItem) {
+      try {
+        await bot.equip(foodItem, 'hand');
+        await bot.consume();
+        console.log('🍗 Bot makan manual.');
+        sendToTelegram('🍗 Bot makan otomatis (manual).');
+      } catch (err) {
+        console.log('❌ Gagal makan:', err.message);
+      }
+    } else {
+      console.log('❌ Tidak ada makanan.');
+    }
+  }
+};
 
-// Log status tiap 1 jam
+// Cek makan tiap 10 menit
+setInterval(eatIfHungry, 10 * 60 * 1000);
+
+// Log status bot tiap 1 jam
 setInterval(() => {
   if (bot.entity && bot.entity.position) {
     const now = new Date().toLocaleString();
     const pos = bot.entity.position;
-    sendToTelegram(`🕒 [${now}] Log: Bot AFK aktif. Posisi: X=${pos.x.toFixed(1)}, Y=${pos.y.toFixed(1)}, Z=${pos.z.toFixed(1)}`);
+    sendToTelegram(`🕒 [${now}] Bot aktif di X=${pos.x.toFixed(1)}, Y=${pos.y.toFixed(1)}, Z=${pos.z.toFixed(1)}`);
   }
-}, 3600000); // tiap 1 jam
+}, 60 * 60 * 1000);
+
+// Jika bot di-kick
+bot.on('kicked', reason => {
+  console.log('❌ Bot di-kick:', reason);
+  sendToTelegram(`❌ Bot di-kick.\nAlasan: ${reason}`);
+});
+
+// Jika bot disconnect
+bot.on('end', () => {
+  console.log('🔁 Bot disconnect. Reconnect 10 detik...');
+  sendToTelegram('🔁 Bot disconnect. Coba reconnect dalam 10 detik...');
+  setTimeout(() => {
+    spawn('node', ['afk.js'], { stdio: 'inherit' });
+  }, 10000);
+});
