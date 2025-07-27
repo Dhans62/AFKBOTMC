@@ -20,8 +20,8 @@ Bot AFK otomatis untuk server Minecraft berbasis [mineflayer] Cocok untuk auto A
 ### ✅ 1. Install Termux & dependencies
 
 
-'''pkg update && pkg upgrade -y'''
-'pkg install nodejs git curl tmux -y'
+pkg update && pkg upgrade -y
+pkg install nodejs git curl tmux -y
 
 
 ---
