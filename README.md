@@ -1,6 +1,6 @@
 # 🤖 AFKBOTMC
 
-Bot AFK otomatis untuk server Minecraft berbasis 'mineflayer' Cocok untuk auto AFK, auto mancing, dan login otomatis di server vanilla maupun cracked.
+Bot AFK otomatis untuk server Minecraft berbasis `mineflayer` Cocok untuk auto AFK, auto mancing, dan login otomatis di server vanilla maupun cracked.
 
 ---
 
