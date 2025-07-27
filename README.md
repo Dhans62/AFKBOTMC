@@ -19,32 +19,32 @@ Bot AFK otomatis untuk server Minecraft berbasis [mineflayer] Cocok untuk auto A
 
 ### ✅ 1. Install Termux & dependencies
 
-`
+```bash
 pkg update && pkg upgrade -y
 pkg install nodejs git curl tmux -y
-`
+```
 
 ---
 
 ### ✅ 2. Clone repository
-`
+```bash
 git clone https://github.com/Dhans62/AFKBOTMC.git
 cd AFKBOTMC
-`
+```
 
 ---
 
 ### ✅ 3. Install dependencies
-`
+```bash
 npm install
-`
+```
 
 ---
 
 ### ✅ 4. Izin eksekusi script
-`
+```bash
 chmod +x startbot.sh
-`
+```
 
 ---
 
