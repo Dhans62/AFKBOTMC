@@ -28,7 +28,7 @@ pkg install nodejs git curl tmux -y
 
 ### ✅ 2. Clone repository
 
-git clone https://github.com/username/AFKBOTMC.git
+git clone https://github.com/Dhans62/AFKBOTMC.git
 cd AFKBOTMC
 
 
