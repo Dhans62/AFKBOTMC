@@ -2,15 +2,15 @@ const mineflayer = require('mineflayer');
 const axios = require('axios');
 const { spawn } = require('child_process');
 
-// Telegram Config
-const TELEGRAM_TOKEN = '****';
-const TELEGRAM_CHAT_ID = '****';
+// Konfigurasi Telegram
+const TELEGRAM_TOKEN = 'TOKEN';
+const TELEGRAM_CHAT_ID = 'CHAT ID';
 
 // Bot config
 const bot = mineflayer.createBot({
-  host: '****',
+  host: 'SERVER IP',
   port: 25565,
-  username: '*****',
+  username: 'USER NAME',
   version: false
 });
 
@@ -23,7 +23,6 @@ function sendToTelegram(message) {
   });
 }
 
-// cek inventory (log Termux)
 function cekInventory() {
   const items = bot.inventory.items();
 
@@ -46,8 +45,6 @@ bot.once('spawn', () => {
     console.log('✅ Login dikirim');
     bot.chat('/home afk');
     console.log('✅ /home afk dikirim');
-
-    // Tunggu 4 detik lagi lalu kirim status & cek inventory
     setTimeout(() => {
       const pos = bot.entity.position;
       sendToTelegram(`✅ Bot AFK online di X: ${pos.x.toFixed(1)}, Y: ${pos.y.toFixed(1)}, Z: ${pos.z.toFixed(1)}`);
@@ -56,7 +53,6 @@ bot.once('spawn', () => {
   }, 3000);
 });
 
-// Fungsi makan jika lapar
 const eatIfHungry = async () => {
   if (bot.food < 20) {
     const foodItem = bot.inventory.items().find(item =>
@@ -83,7 +79,7 @@ const eatIfHungry = async () => {
 
 setInterval(eatIfHungry, 10 * 60 * 1000);
 
-// Log status bot tiap 1 jam
+// Log 1jam 1x
 setInterval(() => {
   if (bot.entity && bot.entity.position) {
     const now = new Date().toLocaleString();
@@ -92,13 +88,11 @@ setInterval(() => {
   }
 }, 60 * 60 * 1000);
 
-// bot di-kick??
 bot.on('kicked', reason => {
   console.log('❌ Bot di-kick:', reason);
   sendToTelegram(`❌ Bot di-kick.\nAlasan: ${reason}`);
 });
 
-// bot disconnect
 bot.on('end', () => {
   console.log('🔁 Bot disconnect. Reconnect 10 detik...');
   sendToTelegram('🔁 Bot disconnect. Coba reconnect dalam 10 detik...');
