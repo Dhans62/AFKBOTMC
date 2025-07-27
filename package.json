@@ -1,11 +1,30 @@
 {
   "name": "afkbotmc",
   "version": "1.0.0",
-  "description": "Bot Minecraft Java untuk AFK di server (Termux compatible)",
+  "description": "Bot Minecraft Java untuk AFK, auto login, auto fishing. Bisa dijalankan di Termux (Android).",
   "main": "afk.js",
   "scripts": {
     "start": "node afk.js"
   },
+  "keywords": [
+    "minecraft",
+    "mineflayer",
+    "afk",
+    "termux",
+    "bot",
+    "auto-fishing",
+    "auto-login"
+  ],
+  "author": "Dhans62",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Dhans62/AFKBOTMC.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Dhans62/AFKBOTMC/issues"
+  },
+  "homepage": "https://github.com/Dhans62/AFKBOTMC",
   "dependencies": {
     "mineflayer": "^4.13.0",
     "axios": "^1.6.8"
