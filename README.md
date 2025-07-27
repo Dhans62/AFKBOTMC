@@ -26,7 +26,7 @@ pkg install nodejs git curl tmux -y
 
 ---
 
-✅ 2. Clone repository
+### ✅ 2. Clone repository
 
 git clone https://github.com/username/AFKBOTMC.git
 cd AFKBOTMC
@@ -34,20 +34,20 @@ cd AFKBOTMC
 
 ---
 
-✅ 3. Install dependencies
+### ✅ 3. Install dependencies
 
 npm install
 
 
 ---
 
-✅ 4. Izin eksekusi script
+### ✅ 4. Izin eksekusi script
 
 chmod +x startbot.sh
 
 
 ---
 
-✅ 5. Jalankan bot
+### ✅ 5. Jalankan bot
 
 ./startbot.sh
