@@ -1,17 +1,24 @@
-# AFKBOTMC
-bot afk untuk Minecraft server
+# 🤖 AFKBOTMC
 
-Step 1
+Bot AFK otomatis untuk server Minecraft berbasis [mineflayer](https://github.com/PrismarineJS/mineflayer). Cocok untuk auto AFK, auto mancing, dan login otomatis di server vanilla maupun cracked.
 
+---
+
+## 📦 Fitur
+
+- ✅ Auto login (`/login password`)
+- ✅ Auto teleport ke `/home afk`
+- ✅ Auto fishing (otomatis mancing)
+- ✅ Auto reconnect saat disconnect
+- ✅ Notifikasi Telegram saat bot disconnect (opsional)
+- ✅ Bisa dijalankan di Termux (Android)
+
+---
+
+## 🛠️ Instalasi (Termux / Android)
+
+### ✅ 1. Install Termux & dependencies
+
+```bash
 pkg update && pkg upgrade -y
-pkg install nodejs git curl -y
-
-Step 2
-
-cd ~
-git clone https://github.com/Dhans62/AFKBOTMC.git
-cd AFKBOTMC
-
-step 3
-
-npm install
+pkg install nodejs git curl tmux -y
