@@ -49,6 +49,6 @@ chmod +x startbot.sh
 ---
 
 ### ✅ 5. Jalankan bot
-`
+```bash
 ./startbot.sh
-`
+```
