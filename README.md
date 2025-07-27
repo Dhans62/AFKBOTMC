@@ -15,7 +15,7 @@ Bot AFK otomatis untuk server Minecraft berbasis `mineflayer` Cocok untuk auto A
 
 ---
 
-## 🛠️ Instalasi (Termux / Android)
+## 🛠️ Instalasi
 
 ### ✅ 1. Install Termux & dependencies
 
@@ -52,3 +52,19 @@ chmod +x startbot.sh
 ```bash
 ./startbot.sh
 ```
+
+## 🛠️ Setting
+
+```bash
+nano afk.js
+```
+
+---
+
+#✅ Siap Digunakan
+
+Instalasi selesai. Bot bisa langsung dipakai sesuai kebutuhanmu.
+Kalau ada masukan, bug, atau saran fitur, feel free untuk kontribusi.
+
+Thanks!
+-Dhans62
