@@ -1,6 +1,6 @@
 # 🤖 AFKBOTMC
 
-Bot AFK otomatis untuk server Minecraft berbasis [mineflayer](https://github.com/PrismarineJS/mineflayer). Cocok untuk auto AFK, auto mancing, dan login otomatis di server vanilla maupun cracked.
+Bot AFK otomatis untuk server Minecraft berbasis [mineflayer] Cocok untuk auto AFK, auto mancing, dan login otomatis di server vanilla maupun cracked.
 
 ---
 
@@ -26,10 +26,28 @@ pkg install nodejs git curl tmux -y
 
 ---
 
+✅ 2. Clone repository
 
-### ✅ Step 2: clone repository
-
-
-bash
 git clone https://github.com/username/AFKBOTMC.git
 cd AFKBOTMC
+
+
+---
+
+✅ 3. Install dependencies
+
+npm install
+
+
+---
+
+✅ 4. Izin eksekusi script
+
+chmod +x startbot.sh
+
+
+---
+
+✅ 5. Jalankan bot
+
+./startbot.sh
