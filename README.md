@@ -22,3 +22,14 @@ Bot AFK otomatis untuk server Minecraft berbasis [mineflayer](https://github.com
 ```bash
 pkg update && pkg upgrade -y
 pkg install nodejs git curl tmux -y
+
+
+---
+
+
+### ✅ Step 2: clone repository
+
+
+'''bash
+git clone https://github.com/username/AFKBOTMC.git
+cd AFKBOTMC
