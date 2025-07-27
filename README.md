@@ -62,7 +62,7 @@ nano afk.js
 
 ---
 
-#✅ Siap Digunakan
+# ✅ Siap Digunakan
 
 Instalasi selesai. Bot bisa langsung dipakai sesuai kebutuhanmu.
 Kalau ada masukan, bug, atau saran fitur, feel free untuk kontribusi.
